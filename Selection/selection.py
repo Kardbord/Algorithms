@@ -78,11 +78,9 @@ def selection(A, k, initial_call = True):
     i = len(A_1)
     j = len(A_3)
     if i < k <= (i + j):
-        print('returning pivot')
         return pivot
     if k <= i:
         return selection(A_1, k, False)
     if k > (i + j):
         return selection(A_2, k - i - j, False)
-    print('fell out')
 
