@@ -5,16 +5,16 @@ def sortSelection(A, k):
     Selects the @k-th smallest number from @A in O(nlogn) time by sorting
     and returning A[k]
     
-    Note that indexing begins at 0, so
-    call selection(A, 0) to get the smallest number in the list,
+    Note that indexing begins at 1 for this algorithm, so
+    call selection(A, 1) to get the smallest number in the list,
     call selection(A, len(A) / 2) to get the median number of the list,
-    call selection(A, len(A) - 1) to get the largest number of the list
+    call selection(A, len(A)) to get the largest number of the list
     
     param A: an unsorted list
     param k: the k-th smallest number of @A to find
-    return : the k-th smallest number of @A
+    return : the k-th smallest number of @A, or None
     """
-    if not A or k < 0 or k >= len(A):
+    if not A or k < 0 or k > len(A):
         print("Out of range in sortSelection")
         return None
     # TODO: replace this with my own merge-sort
@@ -33,31 +33,29 @@ def pickPivot(A):
     i = 0
     j = 5
     B = []
-    for _ in range(len(A) / j):
+    for _ in range((len(A) / j) + 1):
         B.append(selection(A[i:j], len(A[i:j]) / 2))
         i += 5
         j += 5
     return selection(B, len(B) / 2)
 
-# TODO: fix this buggy mofo.
-# Seriously, it works... but only sometimes.
-# Edge cases, e.g. selection(A, 0), (A, 1), (A, len(A)) are spotty.
-# Also, shuffling the list and then calling selection can cause it to randomly not work
 def selection(A, k, initial_call = True):
     """
     Selects the @k-th smallest number from @A in O(n) time
     
-    Note that indexing begins at 0, so
-    call selection(A, 0) to get the smallest number in the list,
+    Note that indexing begins at 1 for this algorithm, so
+    call selection(A, 1) to get the smallest number in the list,
     call selection(A, len(A) / 2) to get the median number of the list,
-    call selection(A, len(A) - 1) to get the largest number of the list
+    call selection(A, len(A)) to get the largest number of the list
     
     param A            : an unsorted list
     param k            : the k-th smallest number of @A to find
     param initial_call : ensures consistent results; should always be True for initial call
-    return             : the k-th smallest number of @A
+    return             : the k-th smallest number of @A, or None
     """
-    if not A or k < 0 or k >= len(A):
+    if not A :
+        return None
+    if k < 0 or k > len(A):
         print("Out of range in selection")
         return None
     if len(A) <= 100:
