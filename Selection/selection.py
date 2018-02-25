@@ -12,10 +12,11 @@ def sortSelection(A, k):
     
     param A: an unsorted list
     param k: the k-th smallest number of @A to find
-    return : the k-th smallest number of @A, or None
+    return : the k-th smallest number of @A 
     """
-    if not A or k < 0 or k >= len(A):
-        return None
+    if k < 0 or k >= len(A):
+        raise IndexError\
+        ('Requested k-th smallest value is out of index range for the provided list')
     B = A[:]
     B.sort()
     return B[k]
@@ -26,16 +27,17 @@ def pickPivot(A):
     finding the median of each group, and selecting the median of those
     medians as a pivot
     
-    param A: an unsorted list
-    return : the pivot
+    param A : an unsorted list
+    return  : the pivot
     """
     i = 0
     j = 5
     B = []
     for _ in range((len(A) / j) + 1):
-        B.append(selection(A[i:j], len(A[i:j]) / 2))
-        i += 5
-        j += 5
+        if A[i:j]:
+            B.append(selection(A[i:j], len(A[i:j]) / 2))
+            i += 5
+            j += 5
     return selection(B, len(B) / 2)
 
 def selection(A, k):
@@ -47,12 +49,13 @@ def selection(A, k):
     call selection(A, len(A) / 2) to get the median number of the list,
     call selection(A, len(A) - 1) to get the largest number of the list
     
-    param A            : an unsorted list
-    param k            : the k-th smallest number of @A to find
-    return             : the k-th smallest number of @A, or None
+    param A : an unsorted list
+    param k : the k-th smallest number of @A to find
+    return  : the k-th smallest number of @A
     """
-    if not A or k < 0 or k > len(A):
-        return None
+    if k < 0 or k >= len(A):
+        raise IndexError\
+        ('Requested k-th smallest value is out of index range for the provided list')
     if len(A) <= 100:
             return sortSelection(A, k)
 
@@ -67,13 +70,13 @@ def selection(A, k):
         elif item > pivot:
             A_2.append(item) # A_2 = items of @A greater than pivot
         else:
-            A_2.append(item) # items of @A equal to pivot
+            A_3.append(item) # A_3 = items of @A equal to pivot
 
     i = len(A_1)
     j = len(A_3)
-    if i < k <= (i + j):
+    if i <= k <= (i + j):
         return pivot
-    if k <= i:
+    if k < i:
         return selection(A_1, k)
     if k > (i + j):
         return selection(A_2, k - i - j)
