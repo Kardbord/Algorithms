@@ -33,12 +33,16 @@ def pickPivot(A):
     i = 0
     j = 5
     B = []
-    for x in range(len(A) / j):
+    for _ in range(len(A) / j):
         B.append(selection(A[i:j], len(A[i:j]) / 2))
         i += 5
         j += 5
     return selection(B, len(B) / 2)
 
+# TODO: fix this buggy mofo.
+# Seriously, it works... but only sometimes.
+# Edge cases, e.g. selection(A, 0), (A, 1), (A, len(A)) are spotty.
+# Also, shuffling the list and then calling selection can cause it to randomly not work
 def selection(A, k, initial_call = True):
     """
     Selects the @k-th smallest number from @A in O(n) time
