@@ -1,19 +1,19 @@
 #!/bin/python
 
-"""
-" Selects the @k-th smallest number from @A in O(nlogn) time by sorting
-" and returning A[k]
-" 
-" Note that indexing begins at 0, so
-" call selection(A, 0) to get the smallest number in the list,
-" call selection(A, len(A) / 2) to get the median number of the list,
-" call selection(A, len(A) - 1) to get the largest number of the list
-"
-" param A: an unsorted list
-" param k: the k-th smallest number of @A to find
-" return : the k-th smallest number of @A
-"""
 def sortSelection(A, k):
+    """
+    Selects the @k-th smallest number from @A in O(nlogn) time by sorting
+    and returning A[k]
+    
+    Note that indexing begins at 0, so
+    call selection(A, 0) to get the smallest number in the list,
+    call selection(A, len(A) / 2) to get the median number of the list,
+    call selection(A, len(A) - 1) to get the largest number of the list
+    
+    param A: an unsorted list
+    param k: the k-th smallest number of @A to find
+    return : the k-th smallest number of @A
+    """
     if not A or k < 0 or k >= len(A):
         print("Out of range in sortSelection")
         return None
@@ -21,15 +21,15 @@ def sortSelection(A, k):
     A.sort()
     return A[k]
 
-"""
-" Picks a pivot by arbitrarily partitioning @A into groups of 5,
-" finding the median of each group, and selecting the median of those
-" medians as a pivot
-" 
-" param A: an unsorted list
-" return : the pivot
-"""
 def pickPivot(A):
+    """
+    Picks a pivot by arbitrarily partitioning @A into groups of 5,
+    finding the median of each group, and selecting the median of those
+    medians as a pivot
+    
+    param A: an unsorted list
+    return : the pivot
+    """
     i = 0
     j = 5
     B = []
@@ -39,20 +39,20 @@ def pickPivot(A):
         j += 5
     return selection(B, len(B) / 2)
 
-"""
-" Selects the @k-th smallest number from @A in O(n) time
-" 
-" Note that indexing begins at 0, so
-" call selection(A, 0) to get the smallest number in the list,
-" call selection(A, len(A) / 2) to get the median number of the list,
-" call selection(A, len(A) - 1) to get the largest number of the list
-"
-" param A            : an unsorted list
-" param k            : the k-th smallest number of @A to find
-" param initial_call : ensures consistent results; should always be True for initial call
-" return             : the k-th smallest number of @A
-"""
 def selection(A, k, initial_call = True):
+    """
+    Selects the @k-th smallest number from @A in O(n) time
+    
+    Note that indexing begins at 0, so
+    call selection(A, 0) to get the smallest number in the list,
+    call selection(A, len(A) / 2) to get the median number of the list,
+    call selection(A, len(A) - 1) to get the largest number of the list
+    
+    param A            : an unsorted list
+    param k            : the k-th smallest number of @A to find
+    param initial_call : ensures consistent results; should always be True for initial call
+    return             : the k-th smallest number of @A
+    """
     if not A or k < 0 or k >= len(A):
         print("Out of range in selection")
         return None
