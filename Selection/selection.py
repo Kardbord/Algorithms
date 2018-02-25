@@ -1,26 +1,24 @@
 #!/bin/python
 
-# TODO: copy list before doing anything to prevent mangling the input
 def sortSelection(A, k):
     """
     Selects the @k-th smallest number from @A in O(nlogn) time by sorting
     and returning A[k]
     
-    Note that indexing begins at 1 for this algorithm, so
-    call selection(A, 1) to get the smallest number in the list,
+    Note that indexing begins at 0, so
+    call selection(A, 0) to get the smallest number in the list,
     call selection(A, len(A) / 2) to get the median number of the list,
-    call selection(A, len(A)) to get the largest number of the list
+    call selection(A, len(A) - 1) to get the largest number of the list
     
     param A: an unsorted list
     param k: the k-th smallest number of @A to find
     return : the k-th smallest number of @A, or None
     """
     if not A or k < 0 or k >= len(A):
-        print("Out of range in sortSelection")
         return None
-    # TODO: replace this with my own merge-sort
-    A.sort()
-    return A[k]
+    B = A[:]
+    B.sort()
+    return B[k]
 
 def pickPivot(A):
     """
@@ -40,29 +38,22 @@ def pickPivot(A):
         j += 5
     return selection(B, len(B) / 2)
 
-def selection(A, k, initial_call = True):
+def selection(A, k):
     """
     Selects the @k-th smallest number from @A in O(n) time
     
-    Note that indexing begins at 1 for this algorithm, so
-    call selection(A, 1) to get the smallest number in the list,
+    Note that indexing begins at 0, so
+    call selection(A, 0) to get the smallest number in the list,
     call selection(A, len(A) / 2) to get the median number of the list,
-    call selection(A, len(A)) to get the largest number of the list
+    call selection(A, len(A) - 1) to get the largest number of the list
     
     param A            : an unsorted list
     param k            : the k-th smallest number of @A to find
-    param initial_call : ensures consistent results; should always be True for initial call
     return             : the k-th smallest number of @A, or None
     """
-    if not A :
-        return None
-    if k < 0 or k > len(A):
-        print("Out of range in selection")
+    if not A or k < 0 or k > len(A):
         return None
     if len(A) <= 100:
-        if initial_call:
-            return sortSelection(A, k)
-        else:
             return sortSelection(A, k)
 
     pivot = pickPivot(A)
@@ -83,7 +74,7 @@ def selection(A, k, initial_call = True):
     if i < k <= (i + j):
         return pivot
     if k <= i:
-        return selection(A_1, k, False)
+        return selection(A_1, k)
     if k > (i + j):
-        return selection(A_2, k - i - j, False)
+        return selection(A_2, k - i - j)
 
