@@ -1,5 +1,6 @@
 #!/bin/python
 
+# TODO: copy list before doing anything to prevent mangling the input
 def sortSelection(A, k):
     """
     Selects the @k-th smallest number from @A in O(nlogn) time by sorting
@@ -14,7 +15,7 @@ def sortSelection(A, k):
     param k: the k-th smallest number of @A to find
     return : the k-th smallest number of @A, or None
     """
-    if not A or k < 0 or k > len(A):
+    if not A or k < 0 or k >= len(A):
         print("Out of range in sortSelection")
         return None
     # TODO: replace this with my own merge-sort
@@ -62,7 +63,7 @@ def selection(A, k, initial_call = True):
         if initial_call:
             return sortSelection(A, k)
         else:
-            return sortSelection(A, k - 1)
+            return sortSelection(A, k)
 
     pivot = pickPivot(A)
 
