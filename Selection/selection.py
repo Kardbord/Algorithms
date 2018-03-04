@@ -6,13 +6,13 @@ def sortSelection(A, k):
     and returning A[k]
     
     Note that indexing begins at 0, so
-    call selection(A, 0) to get the smallest number in the list,
-    call selection(A, len(A) / 2) to get the median number of the list,
-    call selection(A, len(A) - 1) to get the largest number of the list
+    call sortSelection(A, 0) to get the smallest number in the list,
+    call sortselection(A, len(A) / 2) to get the median number of the list,
+    call sortselection(A, len(A) - 1) to get the largest number of the list
     
-    param A: an unsorted list
-    param k: the k-th smallest number of @A to find
-    return : the k-th smallest number of @A 
+    param A : an unsorted list
+    param k : the k-th smallest number of @A to find
+    return  : the k-th smallest number of @A 
     """
     if k < 0 or k >= len(A):
         raise IndexError\
