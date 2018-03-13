@@ -5,7 +5,7 @@
 ; Hence, if the result of a bit-wise 'and' operation on @num and
 ; @num - 1 results in 0, then the @num is a power of two.
 ;
-; param num : a number
+; param num : any number
 ; return    : true if @num is a power of two, nil if not
 (define (is-power-of-two-bitwise num)
     (if 
