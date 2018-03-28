@@ -45,7 +45,6 @@ int main() {
         }
         if (a_total <= m) {
             std::cout << "Sum of subset is " << a_total << std::endl;
-            return EXIT_SUCCESS;
         }
 
         int table[A_SIZE + 1][m + 1];
