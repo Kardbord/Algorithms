@@ -29,6 +29,7 @@ int min_difference(int const & a, int const & b, int const & total) {
 
 // TODO: document this project
 // TODO: take @m and @a as command line arguments
+// See Homework-5.pdf problem number 2
 int main() {
 
     int a[A_SIZE];
