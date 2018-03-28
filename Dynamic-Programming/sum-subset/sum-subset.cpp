@@ -4,6 +4,7 @@
 
 const int A_SIZE = 4;
 
+// TODO: document me
 int min_difference(int const & a, int const & b, int const & c, int const & total) {
 
     int a1 = abs(total - a);
@@ -18,6 +19,7 @@ int min_difference(int const & a, int const & b, int const & c, int const & tota
     return c1;
 }
 
+// TODO: document me
 int min_difference(int const & a, int const & b, int const & total) {
     int a1 = abs(total - a);
     int b1 = abs(total - b);
@@ -25,6 +27,8 @@ int min_difference(int const & a, int const & b, int const & total) {
     return b1;
 }
 
+// TODO: document this project
+// TODO: take @m and @a as command line arguments
 int main() {
 
     int a[A_SIZE];
