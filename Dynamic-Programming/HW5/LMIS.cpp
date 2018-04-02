@@ -11,6 +11,8 @@ int max(int const & a, int const & b) {
 
 // Calculates the longest monetonically increasing subsequence of A 
 // in O(n^2) time using dynamic programming techniques.
+// TODO: Document this project better
+// TODO: make this project work with command line inputs
 //
 // See https://www.youtube.com/watch?v=E6us4nmXTHs
 // See problem 4 in homework-5.pdf
